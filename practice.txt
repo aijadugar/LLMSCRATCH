@@ -1,0 +1,43 @@
+1.
+with open('bookname', 'r', encoding = 'utf-8'):
+    raw_text = f.read()
+
+print(raw_text)
+print(len(raw_text))
+
+2.
+practice.txt
+import re 
+preprocessed = re.split(r'([,.;:"'()\])|\s', raw_text)
+preprocessed = [item.strip() for item in preprocessed if item.strip()]
+print(len(preprocessed))
+
+3.
+vocab_data = sorted(list(set(preprocessed)))
+vocab_data.extend(["|unk|", "|endoftext|"])
+vocab = {token:id for id, token in enumerate(vocab_data)}
+print(vocab)
+print(len(vocab))
+
+4.
+
+class Tokenizer:
+    def __init__(self, vocab):
+        token_to_id = vocab
+        id_to_token = {id:token for token, id in vocab.items()}
+
+    def encode(self, token):
+        return id
+
+    def decode(self, id):
+        return token
+
+tokenizer = Tokenizer(vocab)
+
+text = "Let's make LLMs from scratch."
+
+ids = encode(text)
+print(ids)
+
+token = decode(ids)
+print(token)
